@@ -1,13 +1,6 @@
-#! /usr/bin/python
-#-*-coding: utf-8 -*-
-
-"""
-Simple test script for TagReader
-Reads a few tags and prints them
-Last Modified:
-2018/03/07 by Jamie Boyd - added some comments, cleaned up a bit
-"""
-
+'''
+Manual log mice weight with RFID Tag Reader
+'''
 from RFIDTagReader import TagReader
 from datetime import datetime
 import pymysql
@@ -26,10 +19,16 @@ RFID_kind = 'ID'
 Setting to timeout to None means we don't return till we have a tag.
 If a timeout is set and no tag is found, 0 is returned.
 """
+HOST=input('Enter host database IP:')
+USER=input('Enter user name:')
+DATABASE=input('Enter database to connecnt to:')
+PASSWD=input('Enter password for database:')
+
+
 RFID_timeout = None
 RFID_doCheckSum = True
 read = True
-db1 = pymysql.connect(host='142.103.107.236', user='slavePi', db='AHF_laser_cage', password='iamapoorslave',autocommit=True)
+db1 = pymysql.connect(host=HOST, user=USER, db=DATABASE, password=PASSWD,autocommit=True)
 cur1 = db1.cursor()
 insert_statment='INSERT INTO Weight_ManualLog (Tag,Timestamp,Weight, Change_To_Baseline, Water_Needed,Cage) VALUES (%s,%s,%s,%s,%s,%s)'
 try:
