@@ -116,10 +116,6 @@ def save_new_subjects():
             f.writelines("%s\n" %i)
         f.writelines('History:\n')
     print ('Saved all {:d} tags'.format (int(nReads)))
-'''
-add a function to open a new csv file
-or continue to writing to a new file 
-'''
 def open_load_subjects(cage):
     global score_dict, list_compare
     record_filename=os.getcwd()+'/Dominance/'+cage+'_Dominance_test'+'.txt'
@@ -135,7 +131,6 @@ def open_load_subjects(cage):
     for i in listm:
         score_dict[str(i)]=0
     list_compare=list(itertools.combinations(listm,2))   
-
 if __name__=='__main__':
     HOST=input('Enter host database IP:')
     USER=input('Enter user associated:')
