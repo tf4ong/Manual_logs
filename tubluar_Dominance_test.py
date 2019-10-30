@@ -85,7 +85,7 @@ def csv_save():
                         file.write('\n')      
 def save_db():
     dic_loc=dt.datetime.now().strftime("%Y-%m-%d")
-    db1=pymysql.connect(host='142.103.107.236', user='slavePi', db='AHF_laser_cage',password='iamapoorslave',autocommit=True)
+    db1=pymysql.connect(host=HOST, user=USER, db=DATABASE,password=PASSWD,autocommit=True)
     cur1=db1.cursor()
     values=[dic_loc,cage]
     for i in sorted(ranked_dic[dic_loc],key=ranked_dic[dic_loc].get):
@@ -137,6 +137,10 @@ def open_load_subjects(cage):
     list_compare=list(itertools.combinations(listm,2))   
 
 if __name__=='__main__':
+    HOST=input('Enter host database IP:')
+    USER=input('Enter user associated:')
+    DATABASE=input('Enter database to access:')
+    PASSWD=input('Enter password:')
     try:
         cage=input('Enter cage to compare:')
         open_load_subjects(cage)
