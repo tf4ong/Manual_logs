@@ -1,3 +1,6 @@
+'''
+Edit Json file associated with AHF system
+'''
 import json 
 dic_main={0:'HeadFixer',1:'Rewarder',2:'Stimulator'}  
 dic_headFixer={0:'headFixTime', 1: 'propHeadFix',2:'tightnessHeadFix'}
