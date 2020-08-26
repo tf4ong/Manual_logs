@@ -132,10 +132,14 @@ def open_load_subjects(cage):
         score_dict[str(i)]=0
     list_compare=list(itertools.combinations(listm,2))   
 if __name__=='__main__':
-    HOST=input('Enter host database IP:')
-    USER=input('Enter user associated:')
-    DATABASE=input('Enter database to access:')
-    PASSWD=input('Enter password:')
+    save_db=input('Save to a remote database? (Y/N)')
+    if save_db.lower() =='y':
+        HOST=input('Enter host database IP:')
+        USER=input('Enter user associated:')
+        DATABASE=input('Enter database to access:')
+        PASSWD=input('Enter password:')
+    else:
+        pass
     try:
         cage=input('Enter cage to compare:')
         open_load_subjects(cage)
@@ -152,8 +156,11 @@ if __name__=='__main__':
         compare_mice()
     else:
         rank_mice()
-        save_db()
         csv_save()
+        if save_db.lower()=='y':
+            save_db()
+        else: 
+            pass
         print('All pairs compared')
 
 
